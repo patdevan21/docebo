@@ -74,14 +74,10 @@ Console output example:
 
 ### State Management
 - **learnerId**: Controlled by dropdown, starts with `DEFAULT_LEARNER_ID` (1)
-- **courses**: API response data, reset on learner/filter change
+- **courses**: API response data
 - **maxMinutes**: Time filter selection (client-side filtering)
 - **reloadCount**: Trigger for manual refresh (incremented on Refresh button)
 - **error**: User-facing error message
-
-### Validation
-- Backend: Learner ID must be a positive integer (regex: `^[1-9]\d*$`)
-- Frontend: Dropdown enforces valid IDs; invalid URLs default to learner 1
 
 ### Timezone Handling
 - Backend: Stores all timestamps in UTC (ISO-8601)

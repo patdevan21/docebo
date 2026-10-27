@@ -11,7 +11,7 @@ Claude (chat), used for scaffolding and review. I ran and read everything myself
 | Backend service | Drafted `getInProgressCourses` and the remaining-time helper | Chose the rule, the 10-minute default, and the order of filter/sort; read every line |
 | Tests | Drafted `estimatedTime.test.ts` | Checked expected numbers by hand against the seed durations |
 | React UI | Drafted the state machine, components, track events |Adjusted copy, css, error messages |
-| Docs | Drafted PRODUCT.md structure | Rewrote the metric and cuts in my own words |
+| Docs | Drafted PRODUCT.md structure | Rewrote the description and usage in my own words |
 
 ## What you rejected or rewrote
 
@@ -24,4 +24,4 @@ Without AI I would have spent most of my time in setup and styling. I would not 
 
 ## Ownership statement
 
-I can explain and modify the service ordering (404, filter, map, remaining-time filter, sort), the analytics client without AI.
+I can explain and modify the service ordering (404, filter, map, sort), the analytics client without AI.

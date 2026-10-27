@@ -92,6 +92,18 @@ export const enrollments: CourseEnrollment[] = [
     lastActivityAt: daysAgo(106),
     status: 'completed',
   },
+  // Learner 3 exists but has nothing in progress -> API returns 200 with []
+  {
+    courseId: 'course-ethics',
+    title: 'Workplace Ethics',
+    learnerId: 3,
+    lessons: [
+      { id: 'l1', title: 'Intro', completed: true },
+      { id: 'l2', title: 'Procedures', completed: true },
+    ],
+    lastActivityAt: daysAgo(40),
+    status: 'completed',
+  },
 ];
 
 export const knownLearnerIds = new Set(

@@ -42,6 +42,7 @@ export function App() {
 
   const onLearnerChange = (id: number) => {
     setLearnerId(id);
+    setMaxMinutes(null);
     setReloadCount(0);
   };
 
@@ -77,7 +78,7 @@ export function App() {
       });
 
     return () => controller.abort();
-  }, [learnerId, maxMinutes, reloadCount]);
+  }, [learnerId, reloadCount]);
 
   return (
     <main className="page">

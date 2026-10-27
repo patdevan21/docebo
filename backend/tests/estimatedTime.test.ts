@@ -70,6 +70,12 @@ describe('Estimated Time Calculations', () => {
     });
   });
 
+  describe('Learner 3', () => {
+    it('learner 3 exists but has nothing in progress', () => {
+      expect(getInProgressCourses(3)).toEqual([]);
+    });
+  });
+
 
   describe('Unknown Learner', () => {
     it('should throw NotFoundError for unknown learner 999', () => {
