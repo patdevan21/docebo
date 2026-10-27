@@ -1,0 +1,56 @@
+import { enrollments, knownLearnerIds } from '../data/seed';
+import { NotFoundError } from '../errors';
+import type { CourseEnrollment, CourseProgress } from '../types';
+
+/** Days without activity before a course is considered stale (business rule hint). */
+export const STALE_DAYS = 30;
+
+/** Assumed average minutes to finish one lesson, used for time-remaining estimates. */
+export const AVG_MINUTES_PER_LESSON = 10;
+
+/**
+ * Return in-progress courses for a learner, sorted by last activity (most recent first).
+ */
+export function getInProgressCourses(learnerId: number): CourseProgress[] {
+  if (!knownLearnerIds.has(learnerId)) {
+    throw new NotFoundError(`Learner ${learnerId} not found`);
+  }
+
+  return enrollments
+    .filter(
+      (enrollment) =>
+        enrollment.learnerId === learnerId && enrollment.status === 'in_progress', // Filter for in-progress courses for the given learner
+    )
+    .map(toCourseProgress)
+    .sort(
+      (a, b) =>
+        new Date(b.lastActivityAt).getTime() - new Date(a.lastActivityAt).getTime(), // Sort by last activity date, most recent first
+    );
+}
+
+export function computeCompletionPercentage(enrollment: CourseEnrollment): number {
+  if (enrollment.lessons.length === 0) {
+    return 0;
+  }
+  const completed = enrollment.lessons.filter((lesson) => lesson.completed).length;
+  return Math.round((completed / enrollment.lessons.length) * 100);
+}
+
+export function isEnrollmentStale(lastActivityAt: string, now: Date = new Date()): boolean {
+  const lastActivity = new Date(lastActivityAt);
+  const diffMs = now.getTime() - lastActivity.getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  return diffDays > STALE_DAYS;
+}
+
+function toCourseProgress(enrollment: CourseEnrollment): CourseProgress {
+  return {
+    courseId: enrollment.courseId,
+    title: enrollment.title,
+    completionPercentage: computeCompletionPercentage(enrollment),
+    lastActivityAt: enrollment.lastActivityAt,
+    status: 'in_progress',
+    isStale: isEnrollmentStale(enrollment.lastActivityAt), // Added to indicate if the enrollment is stale based on last activity
+    estimatedMinutesRemaining: enrollment.lessons.filter((lesson) => !lesson.completed).length * AVG_MINUTES_PER_LESSON, // Show minutes remaining in current course
+  };
+}

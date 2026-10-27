@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f6f4f1;
+  color: #1c1917;
+}
+
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 {
+  margin: 0.2rem 0 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 650;
+  color: #c2410c;
+}
+
+.lede {
+  margin: 0 0 1.25rem;
+  color: #57534e;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.course {
+  background: #fffcf8;
+  border: 1px solid #e7e0d8;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+
+.course h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.meta {
+  margin: 0;
+  color: #57534e;
+  font-size: 0.88rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #a16207;
+}
+
+/* Learner Filter */
+.toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  font-size: 0.78rem;
+  color: #57534e;
+
+  span {
+    color: #57534e;
+    font-size: 0.9rem;
+  }
+}
+
+.field select {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid #d6cfc6;
+  border-radius: 8px;
+  background: #fffcf8;
+  color: inherit;
+}
+
+.btn {
+  font: inherit;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #c2410c;
+  background: #fff;
+  color: #c2410c;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: #fff4ec;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn:focus-visible,
+.chip:focus-visible,
+.field select:focus-visible {
+  outline: 2px solid #c2410c;
+  outline-offset: 2px;
+}
+
+/* Time Filter chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.chips-label {
+  font-size: 0.8rem;
+  color: #57534e;
+  margin-right: 0.2rem;
+}
+
+.chip {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #d6cfc6;
+  background: #fffcf8;
+  color: #44403c;
+  cursor: pointer;
+}
+
+.chip-active {
+  background: #c2410c;
+  border-color: #c2410c;
+  color: #fff;
+}
